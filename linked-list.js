@@ -29,9 +29,18 @@ class LinkedList {
     }
     this.size++;
   }
+
+  print() {
+    let current = this.head;
+    while (current) {
+      console.log(current.value);
+      current = current.next;
+    }
+  }
 }
 
 const list = new LinkedList();
 list.prepend(1);
 list.prepend(2);
 list.prepend(3);
+list.print();
