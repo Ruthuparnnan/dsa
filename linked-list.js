@@ -37,10 +37,24 @@ class LinkedList {
       current = current.next;
     }
   }
+
+  append(value) {
+    const node = new Node(value);
+    if (this.isEmpty()) {
+      this.head = node;
+    } else {
+      let current = this.head;
+      while (current.next) {
+        current = current.next;
+      }
+      current.next = node;
+    }
+  }
 }
 
 const list = new LinkedList();
 list.prepend(1);
 list.prepend(2);
 list.prepend(3);
+list.append(4);
 list.print();
