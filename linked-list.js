@@ -49,6 +49,29 @@ class LinkedList {
       }
       current.next = node;
     }
+    this.size++;
+  }
+
+  set(value, index) {
+    if (index < 0 || index > this.size) return;
+
+    const node = new Node(value);
+
+    if (index === 0) {
+      node.next = this.head;
+      this.head = node;
+    } else {
+      let current = this.head;
+
+      for (let i = 0; i < index - 1; i++) {
+        current = current.next;
+      }
+
+      node.next = current.next;
+      current.next = node;
+    }
+
+    this.size++;
   }
 }
 
@@ -57,4 +80,5 @@ list.prepend(1);
 list.prepend(2);
 list.prepend(3);
 list.append(4);
+list.set(5, 2);
 list.print();
