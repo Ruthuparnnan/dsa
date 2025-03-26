@@ -32,10 +32,12 @@ class LinkedList {
 
   print() {
     let current = this.head;
+    let values = "";
     while (current) {
-      console.log(current.value);
+      values += `${current.value} -> `;
       current = current.next;
     }
+    console.log(values)
   }
 
   append(value) {
@@ -73,6 +75,29 @@ class LinkedList {
 
     this.size++;
   }
+
+  delete(index) {
+    if (this.isEmpty()) return;
+    if (index < 0 || index > this.size) {
+      console.log("Index out of bounds");
+      return;
+    }
+
+    if (index === 0) {
+      const next = this.head.next;
+      this.head = next;
+      return;
+    }
+
+    let current = this.head;
+    let prev;
+    for (let i = 0; i < index; i++) {
+      prev = current;
+      current = current.next;
+    }
+    prev.next = current.next;
+    this.size--;
+  }
 }
 
 const list = new LinkedList();
@@ -81,4 +106,7 @@ list.prepend(2);
 list.prepend(3);
 list.append(4);
 list.set(5, 2);
+list.print();
+console.log;
+list.delete(3);
 list.print();
