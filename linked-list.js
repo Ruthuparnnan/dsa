@@ -37,7 +37,7 @@ class LinkedList {
       values += `${current.value} -> `;
       current = current.next;
     }
-    console.log(values)
+    console.log(values);
   }
 
   append(value) {
@@ -76,7 +76,7 @@ class LinkedList {
     this.size++;
   }
 
-  delete(index) {
+  removeByIndex(index) {
     if (this.isEmpty()) return;
     if (index < 0 || index > this.size) {
       console.log("Index out of bounds");
@@ -98,6 +98,39 @@ class LinkedList {
     prev.next = current.next;
     this.size--;
   }
+
+  removeByValue(value) {
+    if (this.isEmpty()) return;
+
+    if (this.head.value === value) {
+      this.head = this.head.next;
+      this.size--;
+      return;
+    }
+
+    let current = this.head.next;
+    let prev = this.head;
+
+    while (current !== null && current.value !== value) {
+      prev = current;
+      current = current.next;
+    }
+    if (current === null) return;
+
+    prev.next = current.next;
+    this.size--;
+  }
+
+  searchByValue(value) {
+    if (this.isEmpty()) return;
+    if (this.head.value === value) return 0;
+    let current = this.head.next;
+    for (let i = 1; i < this.size && current !== null; i++) {
+      if (current.value === value) return i;
+      current = current.next;
+    }
+    return -1;
+  }
 }
 
 const list = new LinkedList();
@@ -106,7 +139,8 @@ list.prepend(2);
 list.prepend(3);
 list.append(4);
 list.set(5, 2);
-list.print();
-console.log;
-list.delete(3);
-list.print();
+// list.print();
+list.removeByIndex(3);
+list.removeByValue(5);
+// list.print();
+console.log(list.searchByValue(4));
