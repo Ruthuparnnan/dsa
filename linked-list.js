@@ -9,6 +9,7 @@ class LinkedList {
   constructor(value) {
     this.size = 0;
     this.head = null;
+    this.tail = null;
   }
 
   isEmpty() {
@@ -23,6 +24,7 @@ class LinkedList {
     const node = new Node(value);
     if (this.isEmpty()) {
       this.head = node;
+      this.tail = node;
     } else {
       node.next = this.head;
       this.head = node;
@@ -44,12 +46,14 @@ class LinkedList {
     const node = new Node(value);
     if (this.isEmpty()) {
       this.head = node;
+      this.tail = node;
     } else {
       let current = this.head;
       while (current.next) {
         current = current.next;
       }
       current.next = node;
+      this.tail = node;
     }
     this.size++;
   }
@@ -71,6 +75,7 @@ class LinkedList {
 
       node.next = current.next;
       current.next = node;
+      if (index === this.size) this.tail = node;
     }
 
     this.size++;
@@ -96,6 +101,7 @@ class LinkedList {
       current = current.next;
     }
     prev.next = current.next;
+    if (index === this.size - 1) this.tail = prev;
     this.size--;
   }
 
@@ -104,6 +110,16 @@ class LinkedList {
 
     if (this.head.value === value) {
       this.head = this.head.next;
+      this.size--;
+      return;
+    }
+    if (this.tail.value === value) {
+      let current = this.head;
+      while (current.next !== this.tail) {
+        current = current.next;
+      }
+      current.next = null;
+      this.tail = current;
       this.size--;
       return;
     }
@@ -124,6 +140,7 @@ class LinkedList {
   searchByValue(value) {
     if (this.isEmpty()) return;
     if (this.head.value === value) return 0;
+    if (this.tail.value === value) return this.size - 1;
     let current = this.head.next;
     for (let i = 1; i < this.size && current !== null; i++) {
       if (current.value === value) return i;
@@ -157,5 +174,5 @@ list.removeByIndex(3);
 list.removeByValue(5);
 list.print();
 // console.log(list.searchByValue(4));
-list.reverse()
-list.print()
+list.reverse();
+list.print();
