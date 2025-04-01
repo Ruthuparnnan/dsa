@@ -150,16 +150,20 @@ class LinkedList {
   }
 
   reverse() {
-    if (this.isEmpty()) return;
-    let current = this.head;
+    if (this.isEmpty() || this.size === 1) return;
+
     let prev = null;
-    while (current) {
-      const next = current.next;
-      current.next = prev;
-      prev = current;
-      current = next;
+    let current = this.head;
+    let next = null;
+
+    while (current !== null) {
+      next = current.next; // Store next node
+      current.next = prev; // Reverse the link
+      prev = current; // Move prev to current
+      current = next; // Move current to next
     }
-    this.head = prev;
+
+    this.head = prev; // Update head to the new front (prev was last node)
   }
 }
 
@@ -172,7 +176,5 @@ list.set(5, 2);
 // list.print();
 list.removeByIndex(3);
 list.removeByValue(5);
-list.print();
-// console.log(list.searchByValue(4));
-list.reverse();
-list.print();
+// list.print();
+console.log(list.searchByValue(4));
