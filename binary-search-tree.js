@@ -46,7 +46,7 @@ class BinarySearchTree {
     console.log(this.root);
   }
 
-  insert(value) {
+  insertUsingRecursion(value) {
     const newNode = new Node(value);
 
     if (!this.root) {
