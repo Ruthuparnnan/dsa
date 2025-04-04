@@ -88,6 +88,27 @@ class BinarySearchTree {
       return this.search(root.right, value);
     }
   }
+
+  preOrderTraversal(root) {
+    if (!root) return;
+    console.log(root.value);
+    this.preOrderTraversal(root.left);
+    this.preOrderTraversal(root.right);
+  }
+
+  inOrderTraversal(root) {
+    if (!root) return;
+    this.inOrderTraversal(root.left);
+    console.log(root.value);
+    this.inOrderTraversal(root.right);
+  }
+
+  postOrderTraversal(root) {
+    if (!root) return;
+    this.postOrderTraversal(root.left);
+    this.postOrderTraversal(root.right);
+    console.log(root.value);
+  }
 }
 
 const tree = new BinarySearchTree();
