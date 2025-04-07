@@ -111,13 +111,41 @@ class BinarySearchTree {
   }
 
   breadthFirstSearch() {
+    if (this.isEmpty()) return;
     let queue = [this.root];
     while (queue.length > 0) {
       const current = queue.shift();
       console.log(current.value);
-      if(current.left) queue.push(current.left);
-      if(current.right) queue.push(current.right);
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
     }
+  }
+
+  min() {
+    if (!this.root.left) return this.root.value;
+    let current = this.root.left;
+    while (current.left) {
+      current = current.left;
+    }
+    console.log(current.value);
+  }
+
+  min() {
+    if (this.isEmpty()) return;
+    let current = this.root;
+    while (current.left) {
+      current = current.left;
+    }
+    console.log(current.value);
+  }
+
+  max() {
+    if (this.isEmpty()) return;
+    let current = this.root;
+    while (current.right) {
+      current = current.right;
+    }
+    console.log(current.value);
   }
 }
 
@@ -126,6 +154,9 @@ tree.insertUsingRecursion(10);
 tree.insertUsingRecursion(5);
 tree.insertUsingRecursion(15);
 tree.insertUsingRecursion(9);
-tree.print();
-tree.breadthFirstSearch();
+// tree.print();
 // console.log(tree.search(tree.root, 10));
+// tree.breadthFirstSearch();
+tree.min();
+tree.max();
+
