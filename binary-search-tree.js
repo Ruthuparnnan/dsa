@@ -109,6 +109,16 @@ class BinarySearchTree {
     this.postOrderTraversal(root.right);
     console.log(root.value);
   }
+
+  breadthFirstSearch() {
+    let queue = [this.root];
+    while (queue.length > 0) {
+      const current = queue.shift();
+      console.log(current.value);
+      if(current.left) queue.push(current.left);
+      if(current.right) queue.push(current.right);
+    }
+  }
 }
 
 const tree = new BinarySearchTree();
@@ -116,5 +126,6 @@ tree.insertUsingRecursion(10);
 tree.insertUsingRecursion(5);
 tree.insertUsingRecursion(15);
 tree.insertUsingRecursion(9);
-// tree.print();
-console.log(tree.search(tree.root, 10));
+tree.print();
+tree.breadthFirstSearch();
+// console.log(tree.search(tree.root, 10));
