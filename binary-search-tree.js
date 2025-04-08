@@ -122,21 +122,12 @@ class BinarySearchTree {
   }
 
   min() {
-    if (!this.root.left) return this.root.value;
-    let current = this.root.left;
-    while (current.left) {
-      current = current.left;
-    }
-    console.log(current.value);
-  }
-
-  min() {
     if (this.isEmpty()) return;
     let current = this.root;
     while (current.left) {
       current = current.left;
     }
-    console.log(current.value);
+    return current.value;
   }
 
   max() {
@@ -145,7 +136,35 @@ class BinarySearchTree {
     while (current.right) {
       current = current.right;
     }
-    console.log(current.value);
+    return current.value;
+  }
+
+  delete(value) {
+    this.root = this.deleteNode(this.root, value);
+  }
+
+  deleteNode(root, value) {
+    if (root === null) {
+      return root;
+    }
+    if (!root.right && !root.left) {
+      return null;
+    }
+    if (root.value > value) {
+      root.left = this.deleteNode(root.left, value);
+    } else if (root.value < value) {
+      root.right = this.deleteNode(root.right, value);
+    } else {
+      if (!root.left) {
+        return root.right;
+      } else if (!root.right) {
+        return root.left;
+      }
+
+      root.value = this.min(root.right);
+      root.right = this.deleteNode(root.right, root.value);
+    }
+    return root;
   }
 }
 
@@ -159,4 +178,3 @@ tree.insertUsingRecursion(9);
 // tree.breadthFirstSearch();
 tree.min();
 tree.max();
-
