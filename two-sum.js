@@ -10,4 +10,21 @@ function twoSum(array, target) {
 
   return hasSum;
 }
-console.log(twoSum([4, 2, 2, 1, 5], 6));
+// console.log(twoSum([4, 2, 2, 1, 5], 6));
+
+function twoSumLeetCode(nums, target) {
+  if (nums.length < 2) return false;
+
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) {
+        return [i, j];
+      }
+    }
+  }
+
+  return [];
+}
+
+console.log(twoSumLeetCode([3, 2, 4], 6));
+console.log(twoSumLeetCode([2, 5, 5, 11], 10));
