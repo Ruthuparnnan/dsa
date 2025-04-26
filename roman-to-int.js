@@ -51,6 +51,33 @@ function romanToInt(s) {
   return result;
 }
 
-console.log(romanToInt("III")); // 3
-console.log(romanToInt("IV")); // 4
-console.log(romanToInt("XL"))
+function romanToIntOptimized(string) {
+  const romanToIntMap = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
+  let result = 0;
+
+  for (let i = 0; i < string.length; i++) {
+    let currentValue = romanToIntMap[string[i]];
+    let nextValue = romanToIntMap[string[i + 1]];
+    if (currentValue < nextValue) {
+      result += nextValue - currentValue;
+      i++;
+    } else {
+      result += currentValue;
+    }
+  }
+
+  return result;
+}
+
+console.log(romanToIntOptimized("III")); // 3
+console.log(romanToIntOptimized("IV")); // 4
+console.log(romanToIntOptimized("XL")); // 40
+console.log(romanToIntOptimized("MCMXCIV")); // 1994
