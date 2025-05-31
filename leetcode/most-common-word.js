@@ -1,7 +1,7 @@
 function mostCommonWord(paragraph, banned) {
   const cleanedParagraphArray = paragraph
     .toLowerCase()
-    .replace(/[^a-z\s]/g, "")
+    .replace(/[^a-z\s]/g, " ")
     .split(/\s+/);
   const bannedSet = new Set(banned);
   const countMap = new Map();
@@ -25,8 +25,4 @@ function mostCommonWord(paragraph, banned) {
   return maxWord;
 }
 
-console.log(
-  mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", [
-    "hit",
-  ])
-);
+console.log(mostCommonWord("a, a, a, a, b,b,b,c, c", ["a"]));
