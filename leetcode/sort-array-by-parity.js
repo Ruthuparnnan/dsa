@@ -40,7 +40,7 @@ function sortArrayByParity(nums) {
 
   return result;
 }
-
+    
 const nums = [3, 1, 2, 4];
 const sortedArray = sortArrayByParity(nums);
 console.log(sortedArray); // Output: [2, 4, 3, 1]
