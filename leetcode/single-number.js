@@ -8,6 +8,5 @@ function singleNumber(nums) {
   return result;
 }
 
-const nums = [2, 2, 1,1,3];
+const nums = [2, 2, 1, 3, 1];
 const result = singleNumber(nums);
-console.log(result);
