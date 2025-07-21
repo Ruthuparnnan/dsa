@@ -9,7 +9,7 @@ function specialArrayOptimized(nums) {
     }
   }
 
-  return -1;
+  return -1; 
 }
 
 function specialArray(nums) {
