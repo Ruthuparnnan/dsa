@@ -10,7 +10,7 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var levelOrder = function (root) {
+var levelOrderBottom = function (root) {
   if (!root) return [];
   const queue = [root];
   const result = [];
@@ -23,12 +23,12 @@ var levelOrder = function (root) {
       const node = queue.shift();
       currentLevel.push(node.val);
 
-        if (node.left) queue.push(node.left);
-        if (node.right) queue.push(node.right);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
     }
 
     result.push(currentLevel);
   }
 
-  return result;
+  return result.reverse();
 };
