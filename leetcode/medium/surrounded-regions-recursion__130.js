@@ -22,7 +22,7 @@ var solve = function (board) {
     dfs(i, cols - 1);
   }
 
-  for (let i = 0; i < rows; i++) {
+  for (let i = 0; i < cols; i++) {
     dfs(0, i);
     dfs(rows - 1, i);
   }
