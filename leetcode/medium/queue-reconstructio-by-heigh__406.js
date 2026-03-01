@@ -16,5 +16,5 @@ var reconstructQueue = function(people) {
         result.splice(person[1],0,person)
     }
 
-    return result;
+    return result; 
 };
